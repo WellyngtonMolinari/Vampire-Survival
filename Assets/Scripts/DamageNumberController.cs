@@ -25,10 +25,10 @@ public class DamageNumberController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnDamage(57f, new Vector3(4, 3, 0));
-        }
+        }*/
     }
 
     public void SpawnDamage(float damageAmount, Vector3 location)
