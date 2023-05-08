@@ -11,6 +11,8 @@ public class EnemyDamager : MonoBehaviour
 
     public bool shouldKnockback;
 
+    public bool destroyParent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,20 +24,25 @@ public class EnemyDamager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         //to fade-in the animation of fireball
         transform.localScale = Vector3.MoveTowards(transform.localScale, targetSize, growSpeed * Time.deltaTime);
 
         //to fade-out the animation of fireball
         lifeTime -= Time.deltaTime;
-        
+
         if (lifeTime <= 0f)
         {
             targetSize = Vector3.zero;
 
-            if (transform.localScale == Vector3.zero)
+            if (transform.localScale.x == 0f)
             {
                 Destroy(gameObject);
+
+                if (destroyParent)
+                {
+                    Destroy(transform.parent.gameObject);
+                }
             }
         }
     }
