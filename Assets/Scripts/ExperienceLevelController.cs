@@ -6,7 +6,7 @@ public class ExperienceLevelController : MonoBehaviour
 {
     public static ExperienceLevelController instance;
 
-    private void Awake() 
+    private void Awake()
     {
         instance = this;
     }
@@ -15,21 +15,27 @@ public class ExperienceLevelController : MonoBehaviour
 
     public ExpPickup pickup;
 
+    public List<int> expLevels;
+    public int currentLevel = 1, levelCount = 100;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        while (expLevels.Count < levelCount)
+        {
+            expLevels.Add(Mathf.CeilToInt(expLevels[expLevels.Count - 1] * 1.1f));
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
+
     public void GetExp(int amountToGet)
     {
-        currentExperience += amountToGet; 
+        currentExperience += amountToGet;
     }
 
     public void SpawnExp(Vector3 position, int expValue)
