@@ -36,10 +36,29 @@ public class ExperienceLevelController : MonoBehaviour
     public void GetExp(int amountToGet)
     {
         currentExperience += amountToGet;
+
+        if (currentExperience >= expLevels[currentLevel])
+        {
+            LevelUp();
+        }
+
+        UIController.instance.UpdateExperience(currentExperience, expLevels[currentLevel], currentLevel);
     }
 
     public void SpawnExp(Vector3 position, int expValue)
     {
         Instantiate(pickup, position, Quaternion.identity).expValue = expValue;
+    }
+
+    void LevelUp()
+    {
+        currentExperience -= expLevels[currentLevel];
+
+        currentLevel++;
+
+        if (currentLevel >= expLevels.Count)
+        {
+            currentLevel = expLevels.Count - 1;
+        }
     }
 }
