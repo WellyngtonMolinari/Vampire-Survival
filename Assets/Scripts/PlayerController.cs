@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     public List<Weapon> unassignedWeapons, assignedWeapons;
 
+    // WEAPON QTTY AVAILABLE TO PLAYER
+    public int maxWeapons = 3;
+
     // Start is called before the first frame update
     void Start()
     {
