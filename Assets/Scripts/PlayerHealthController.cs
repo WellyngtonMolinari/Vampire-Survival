@@ -37,10 +37,11 @@ public class PlayerHealthController : MonoBehaviour
     public void TakeDamage(float damageToTake)
     {
         currentHealth -= damageToTake;
-
+        // when player dies
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
+            Time.timeScale = 0.2f;
         }
 
         healthSlider.value = currentHealth;

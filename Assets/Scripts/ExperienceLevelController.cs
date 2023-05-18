@@ -92,7 +92,7 @@ public class ExperienceLevelController : MonoBehaviour
             availableWeapons.RemoveAt(selected);
         }
         // prevent to add unsassigned and exceed weapons list
-        if (PlayerController.instance.assignedWeapons.Count < PlayerController.instance.maxWeapons)
+        if (PlayerController.instance.assignedWeapons.Count + PlayerController.instance.fullyLevelledWeapons.Count < PlayerController.instance.maxWeapons)
         {
             availableWeapons.AddRange(PlayerController.instance.unassignedWeapons);
         }
@@ -112,6 +112,17 @@ public class ExperienceLevelController : MonoBehaviour
         for (int i = 0; i < weaponsToUpgrade.Count; i++)
         {
             UIController.instance.levelUpButtons[i].UpdateButtonDisplay(weaponsToUpgrade[i]);
+        }
+
+        for (int i = 0; i < UIController.instance.levelUpButtons.Length; i++)
+        {
+            if (i < weaponsToUpgrade.Count)
+            {
+                UIController.instance.levelUpButtons[i].gameObject.SetActive(true);
+            } else
+            {
+                UIController.instance.levelUpButtons[i].gameObject.SetActive(false);
+            }
         }
     }
 }

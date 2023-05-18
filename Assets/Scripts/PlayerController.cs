@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
 
     // WEAPON QTTY AVAILABLE TO PLAYER
     public int maxWeapons = 3;
+    // To prevent from leveling already max weapon
+    [HideInInspector]
+    public List<Weapon> fullyLevelledWeapons = new List<Weapon>();
 
     // Start is called before the first frame update
     void Start()
