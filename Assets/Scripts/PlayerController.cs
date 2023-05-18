@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
 
     public float pickupRange = 1.5f;
 
-    public Weapon activeWeapon;
+    //public Weapon activeWeapon;
+
+    public List<Weapon> unassignedWeapons, assignedWeapons;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        AddWeapon(Random.Range(0, unassignedWeapons.Count));
     }
 
     // Update is called once per frame
@@ -37,12 +39,35 @@ public class PlayerController : MonoBehaviour
 
         transform.position += moveInput * moveSpeed * Time.deltaTime;
 
-        if(moveInput != Vector3.zero)
+        if (moveInput != Vector3.zero)
         {
             anim.SetBool("isMoving", true);
-        } else 
-            {
-                anim.SetBool("isMoving", false);
-            }
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
+    }
+
+    public void AddWeapon(int weaponNumber)
+    {
+        if (weaponNumber < unassignedWeapons.Count)
+        {
+            assignedWeapons.Add(unassignedWeapons[weaponNumber]);
+
+            unassignedWeapons[weaponNumber].gameObject.SetActive(true);
+            unassignedWeapons.RemoveAt(weaponNumber);
+        }
+    }
+
+    //Same function with a different type of input (float)
+    public void AddWeapon(Weapon weaponToAdd)
+    {
+        weaponToAdd.gameObject.SetActive(true);
+
+        //add unassigned weapons to assigned list
+        assignedWeapons.Add(weaponToAdd);
+        //remove from unassigned weapons list
+        unassignedWeapons.Remove(weaponToAdd);
     }
 }
