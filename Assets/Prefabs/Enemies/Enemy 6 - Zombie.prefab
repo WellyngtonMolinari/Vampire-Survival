@@ -90,8 +90,10 @@ MonoBehaviour:
   damage: 15
   hitWaitTime: 1
   health: 400
-  knockBackTime: 0.25
+  knockBackTime: 0.1
   expToGive: 1
+  coinValue: 1
+  coinDropRate: 0.5
 --- !u!114 &8200899060101012789
 MonoBehaviour:
   m_ObjectHideFlags: 0
