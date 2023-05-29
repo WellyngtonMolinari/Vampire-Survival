@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8200899060101012786}
   - component: {fileID: 8200899060101012788}
   - component: {fileID: 8200899060101012789}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy 6 - Golden Dragon
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -86,11 +86,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theRB: {fileID: 8200899060101012787}
-  moveSpeed: 1
+  moveSpeed: 3
   damage: 15
   hitWaitTime: 1
-  health: 25
-  knockBackTime: 0.5
+  health: 400
+  knockBackTime: 0.25
+  expToGive: 1
 --- !u!114 &8200899060101012789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 8200899061242348507}
   speed: 0.5
-  minSize: 0.9
-  maxSize: 1.1
+  minSize: 1.8
+  maxSize: 2
 --- !u!1 &8200899061242348506
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 639948003
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1197615466, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

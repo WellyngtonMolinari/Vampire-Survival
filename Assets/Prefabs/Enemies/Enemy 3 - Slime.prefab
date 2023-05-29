@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 639948003
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1633049766, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4893965264258622822}
   - component: {fileID: 4893965264258622816}
   - component: {fileID: 4893965264258622817}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy 3 - Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -173,8 +173,9 @@ MonoBehaviour:
   moveSpeed: 0.75
   damage: 5
   hitWaitTime: 1
-  health: 10
+  health: 100
   knockBackTime: 0.5
+  expToGive: 1
 --- !u!114 &4893965264258622817
 MonoBehaviour:
   m_ObjectHideFlags: 0
