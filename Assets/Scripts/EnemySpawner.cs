@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
 
             spawnedEnemies.Add(newEnemy);
         }*/
-
+        // ENEMIES SPAWNER WAVES
         if (PlayerHealthController.instance.gameObject.activeSelf)
         {
             if (currentWave < waves.Count)
