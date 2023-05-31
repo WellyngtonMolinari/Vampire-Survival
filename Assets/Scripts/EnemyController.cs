@@ -56,8 +56,8 @@ public class EnemyController : MonoBehaviour
         {
             hitCounter -= Time.deltaTime;
         }
-        //}
-        /*else
+        /*}
+        else
         {
             theRB.velocity = Vector2.zero;
         }*/

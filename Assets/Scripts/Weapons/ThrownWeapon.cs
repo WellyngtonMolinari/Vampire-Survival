@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ThrownWeapon : MonoBehaviour
 {
-    public float throwPower;
+    public Weapon weapon;
+    private float throwPower;
     public Rigidbody2D theRB;
     public float rotateSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        SetThrowPower();
         theRB.velocity = new Vector2(Random.Range(-throwPower, throwPower), throwPower);
     }
 
@@ -18,5 +20,12 @@ public class ThrownWeapon : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + (rotateSpeed * 360 * Time.deltaTime * Mathf.Sign(theRB.velocity.x)));
+    }
+
+    public void SetThrowPower()
+    {
+        // access speed variable in "weapon.cs" script
+        WeaponStats currentStats = weapon.stats[weapon.weaponLevel];
+        throwPower = currentStats.speed;
     }
 }

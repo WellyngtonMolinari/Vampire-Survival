@@ -39,6 +39,7 @@ public class WeaponThrower : Weapon
         damager.damageAmount = stats[weaponLevel].damage;
         damager.lifeTime = stats[weaponLevel].duration;
 
+        // range is how much bigger weapon is
         damager.transform.localScale = Vector3.one * stats[weaponLevel].range;
 
         throwCounter = 0f;
