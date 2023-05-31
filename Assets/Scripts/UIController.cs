@@ -24,6 +24,8 @@ public class UIController : MonoBehaviour
     public TMP_Text coinText;
 
     public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay, healthUpgradeDisplay, pickupRangeUpgradeDisplay, maxWeaponsUpgradeDisplay;
+
+    public TMP_Text timeText;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,5 +80,13 @@ public class UIController : MonoBehaviour
     {
         PlayerStatController.instance.PurchaseMaxWeapons();
         SkipLevelUp();     
+    }
+
+    public void UpdateTimer(float time)
+    {
+        float minutes = Mathf.FloorToInt (time/60f);
+        float seconds = Mathf.FloorToInt (time % 60);
+
+        timeText.text = "Time: " + minutes + ":" + seconds.ToString("00");
     }
 }
