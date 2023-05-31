@@ -97,6 +97,7 @@ public class UIController : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     public void Restart()
