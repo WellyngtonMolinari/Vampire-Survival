@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damageToTake)
     {
         health -= damageToTake;
-
+        // when enemy takes damage
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -87,7 +87,12 @@ public class EnemyController : MonoBehaviour
             {
                 CoinController.instance.DropCoin(transform.position, coinValue);
             }
-        }
+            //audio when enemies die
+            SFXManager.instance.PlaySFXPitched(0);
+        } /*else
+        {   //audio when enemies takes damage
+            SFXManager.instance.PlaySFXPitched(1);
+        }*/
 
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }

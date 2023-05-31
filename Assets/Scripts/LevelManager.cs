@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(EndLevelCo());
     }
 
-    //COROUTINES
+    //COROUTINES DELAYS
     IEnumerator EndLevelCo()
     {
         yield return new WaitForSeconds(waitToShowEndScreen);

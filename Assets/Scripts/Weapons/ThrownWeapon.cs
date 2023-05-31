@@ -7,13 +7,14 @@ public class ThrownWeapon : MonoBehaviour
     public Weapon weapon;
     private float throwPower;
     public Rigidbody2D theRB;
-    public float rotateSpeed;
+    private float rotateSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         SetThrowPower();
         theRB.velocity = new Vector2(Random.Range(-throwPower, throwPower), throwPower);
+        rotateSpeed = Random.Range(0.5f, 2.0f);
     }
 
     // Update is called once per frame

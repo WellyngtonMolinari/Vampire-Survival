@@ -30,6 +30,10 @@ public class UIController : MonoBehaviour
 
     public GameObject levelEndScreen;
     public TMP_Text endTimeText;
+
+    public string mainMenuName;
+
+    public GameObject pauseScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +43,11 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // IF PLAYERS WANTS TO PAUSE THE GAME
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
     }
 
     public void UpdateExperience(int currentExp, int levelExp, int currentLvl)
@@ -62,7 +70,7 @@ public class UIController : MonoBehaviour
         coinText.text = "Coins: " + CoinController.instance.currentCoins;
     }
 
-        public void PurchaseMoveSpeed()
+    public void PurchaseMoveSpeed()
     {
         PlayerStatController.instance.PurchaseMoveSpeed();
         SkipLevelUp();
@@ -83,20 +91,20 @@ public class UIController : MonoBehaviour
     public void PurchaseMaxWeapons()
     {
         PlayerStatController.instance.PurchaseMaxWeapons();
-        SkipLevelUp();     
+        SkipLevelUp();
     }
 
     public void UpdateTimer(float time)
     {
-        float minutes = Mathf.FloorToInt (time/60f);
-        float seconds = Mathf.FloorToInt (time % 60);
+        float minutes = Mathf.FloorToInt(time / 60f);
+        float seconds = Mathf.FloorToInt(time % 60);
 
         timeText.text = "Time: " + minutes + ":" + seconds.ToString("00");
     }
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(mainMenuName);
         Time.timeScale = 1f;
     }
 
@@ -104,5 +112,28 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void PauseUnpause()
+    {
+        if (pauseScreen.activeSelf == false)
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+            // to prevent from pause during levelup section
+            if (levelUpPanel.activeSelf == false)
+            {
+                Time.timeScale = 1f;
+            }
+        }
     }
 }
