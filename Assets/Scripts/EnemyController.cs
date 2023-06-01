@@ -50,7 +50,12 @@ public class EnemyController : MonoBehaviour
                 moveSpeed = Mathf.Abs(moveSpeed * .5f);
             }
         }
-        theRB.velocity = (target.position - transform.position).normalized * moveSpeed;
+
+        // Calculate the direction towards the target
+        Vector2 direction = (target.position - transform.position).normalized;
+
+        // Move towards the target
+        theRB.velocity = direction * moveSpeed;
 
         if (hitCounter > 0f)
         {
@@ -63,11 +68,12 @@ public class EnemyController : MonoBehaviour
         }*/
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && hitCounter <= 0f)
         {
-            PlayerHealthController.instance.TakeDamage(damage);
+            // Deal damage to the player continuously
+            PlayerHealthController.instance.TakeDamage(damage * Time.deltaTime);
 
             hitCounter = hitWaitTime;
         }
@@ -76,7 +82,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damageToTake)
     {
         health -= damageToTake;
-        // when enemy takes damage
+
         if (health <= 0)
         {
             Destroy(gameObject);

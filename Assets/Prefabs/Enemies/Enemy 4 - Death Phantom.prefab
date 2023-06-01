@@ -88,7 +88,7 @@ MonoBehaviour:
   theRB: {fileID: 8329871015632443901}
   moveSpeed: 1.5
   damage: 10
-  hitWaitTime: 1
+  hitWaitTime: 0
   health: 15
   knockBackTime: 0.5
   expToGive: 2

@@ -18,6 +18,9 @@ public class PlayerHealthController : MonoBehaviour
 
     public GameObject deathEffect;
 
+    public float pickupRange; // Added pickupRange property
+    public float moveSpeed; // Added moveSpeed property
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,13 @@ public class PlayerHealthController : MonoBehaviour
             SFXManager.instance.PlaySFX(3);
         }
 
+        healthSlider.value = currentHealth;
+    }
+
+    public void Heal(float healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         healthSlider.value = currentHealth;
     }
 }

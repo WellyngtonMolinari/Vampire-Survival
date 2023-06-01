@@ -88,12 +88,13 @@ MonoBehaviour:
   theRB: {fileID: 2258787786033515923}
   moveSpeed: 1.25
   damage: 5
-  hitWaitTime: 1
+  hitWaitTime: 0
   health: 5
-  knockBackTime: 0.2
+  knockBackTime: 0.1
   expToGive: 1
   coinValue: 1
   coinDropRate: 0.5
+  candelabradorPrefab: {fileID: 7989340009452198368, guid: 6cf241fcfd9142049bbfa74e697352c4, type: 3}
 --- !u!114 &2258787786033515925
 MonoBehaviour:
   m_ObjectHideFlags: 0

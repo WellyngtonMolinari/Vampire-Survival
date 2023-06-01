@@ -88,11 +88,11 @@ MonoBehaviour:
   theRB: {fileID: 8200899060101012787}
   moveSpeed: 3
   damage: 20
-  hitWaitTime: 1
-  health: 200
-  knockBackTime: 0.05
+  hitWaitTime: 0
+  health: 400
+  knockBackTime: 0
   expToGive: 4
-  coinValue: 1
+  coinValue: 2
   coinDropRate: 0.5
 --- !u!114 &8200899060101012789
 MonoBehaviour:
