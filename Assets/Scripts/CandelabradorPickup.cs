@@ -12,12 +12,12 @@ public class CandelabradorPickup : MonoBehaviour
     public float timeBetweenChecks = .2f;
     private float checkCounter;
 
-    private PlayerHealthController playerHealth;
+    private Transform player;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = PlayerHealthController.instance;
+        player = PlayerController.instance.transform;
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class CandelabradorPickup : MonoBehaviour
     {
         if (movingToPlayer == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerHealth.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         }
         else
         {
@@ -33,10 +33,10 @@ public class CandelabradorPickup : MonoBehaviour
             if (checkCounter <= 0)
             {
                 checkCounter = timeBetweenChecks;
-                if (Vector3.Distance(transform.position, playerHealth.transform.position) < playerHealth.pickupRange)
+                if (Vector3.Distance(transform.position, player.position) < player.GetComponent<PlayerController>().pickupRange)
                 {
                     movingToPlayer = true;
-                    moveSpeed += playerHealth.moveSpeed;
+                    moveSpeed += player.GetComponent<PlayerController>().moveSpeed;
                 }
             }
         }
@@ -46,7 +46,7 @@ public class CandelabradorPickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            playerHealth.Heal(healAmount);
+            PlayerHealthController.instance.Heal(healAmount);
 
             Destroy(gameObject);
         }
