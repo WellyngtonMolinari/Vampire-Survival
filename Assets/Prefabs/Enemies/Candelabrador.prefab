@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theRB: {fileID: 2258787786033515923}
-  moveSpeed: 1.25
+  moveSpeed: 0
   specialDrop:
   - {fileID: 7989340009452198368, guid: 6cf241fcfd9142049bbfa74e697352c4, type: 3}
   damage: 5
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2258787787040641915}
-  speed: 0
+  speed: 0.5
   minSize: 0.9
   maxSize: 1.1
 --- !u!1 &2258787787040641914
