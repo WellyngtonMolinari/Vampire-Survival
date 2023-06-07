@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public Rigidbody2D theRB;
     public float moveSpeed;
     private Transform target;
+    public List<GameObject> specialDrop;
 
     public float damage;
 
@@ -85,7 +86,16 @@ public class EnemyController : MonoBehaviour
 
         if (health <= 0)
         {
+            //audio when enemies die
+            SFXManager.instance.PlaySFXPitched(0);
+
             Destroy(gameObject);
+
+            if (specialDrop.Count > 0)
+            {
+                Instantiate(specialDrop[(int)Random.Range(0f, specialDrop.Count)], this.gameObject.transform.position, Quaternion.Euler(Vector3.zero));
+                return;
+            }
 
             ExperienceLevelController.instance.SpawnExp(transform.position, expToGive);
 
@@ -93,8 +103,7 @@ public class EnemyController : MonoBehaviour
             {
                 CoinController.instance.DropCoin(transform.position, coinValue);
             }
-            //audio when enemies die
-            SFXManager.instance.PlaySFXPitched(0);
+
         } /*else
         {   //audio when enemies takes damage
             SFXManager.instance.PlaySFXPitched(1);
